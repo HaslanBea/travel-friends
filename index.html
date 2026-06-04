@@ -130,20 +130,25 @@ Uma coleção de fotos, momentos e memórias de um dia especial.
 
 </section>
 
+
 <section id="memorias">
+
+<h2 class="section-title">Registro de Memórias</h2>
 
 <div class="memory-book">
 
-<a href="https://docs.google.com/forms/d/e/1FAIpQLScAQKzOyQ6WyNG4FKQoDeoQZjeIr3LVFwbzXnK4m6Ekr9EsBg/viewform?usp=publish-editor" target="_blank">
+<a href="https://docs.google.com/forms/d/e/1FAIpQLScAQKzOyQ6WyNG4FKQoDeoQZjeIr3LVFwbzXnK4m6Ekr9EsBg/viewform?usp=publish-editor"
+target="_blank">
     <button>Deixar uma memória</button>
 </a>
 
 <div id="memoryList">
-
-<div class="memory-entry">
-    <strong>Haslan</strong>
-    <p>O rolê do teatro é incrível.</p>
+    <p>Carregando memórias...</p>
 </div>
+
+</div>
+
+</section>
 
 </div>
 
@@ -158,31 +163,52 @@ Nosso Rolê • 2026
 </footer>
 
 <script>
-function addMemory(){
+async function carregarMemorias() {
 
-const author =
-document.getElementById("author").value;
+    const container = document.getElementById("memoryList");
 
-const message =
-document.getElementById("message").value;
+    try {
 
-if(!author || !message) return;
+        const response = await fetch(
+            "https://docs.google.com/spreadsheets/d/e/2PACX-1vSFkKxU3mIozKfoxNsh2cI0hYOX1nFiGUMufxwE3JlzXJeKY5WTZghZjF89lqlL7ZYDSrsMIFhVOkm1/pub?gid=493946514&single=true&output=csv"
+        );
 
-const div =
-document.createElement("div");
+        const csv = await response.text();
+        const linhas = csv.split("\n");
 
-div.className = "memory-entry";
+        let html = "";
 
-div.innerHTML =
-`<strong>${author}</strong><p>${message}</p>`;
+        for(let i = 1; i < linhas.length; i++){
 
-document
-.getElementById("memoryList")
-.appendChild(div);
+            const cols = linhas[i].split(",");
 
-document.getElementById("author").value="";
-document.getElementById("message").value="";
+            if(cols.length < 3) continue;
+
+            const nome = cols[1]?.trim();
+            const memoria = cols[2]?.trim();
+
+            if(!nome || !memoria) continue;
+
+            html += `
+                <div class="memory-entry">
+                    <strong>${nome}</strong>
+                    <p>${memoria}</p>
+                </div>
+            `;
+        }
+
+        container.innerHTML = html;
+
+    } catch(err){
+
+        container.innerHTML =
+            "<p>Não foi possível carregar as memórias.</p>";
+
+        console.error(err);
+    }
 }
+
+carregarMemorias();
 </script>
 
 </body>
