@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nosso Rolê em São Paulo</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<nav>
+<ul>
+<li><a href="#galeria">Galeria</a></li>
+<li><a href="#momentos">Momentos</a></li>
+<li><a href="#timeline">Roteiro</a></li>
+<li><a href="#memorias">Memórias</a></li>
+</ul>
+</nav>
+
+<section class="hero">
+
+<img src="https://i.postimg.cc/MKLDS61r/Whats-App-Image-2026-06-04-at-16-21-15.jpg" alt="Foto do Rolê">
+
+<h1>Nosso Rolê em São Paulo</h1>
+
+<p>
+Uma coleção de fotos, momentos e memórias de um dia especial.
+</p>
+
+</section>
+
+<section id="galeria">
+
+<h2 class="section-title">Galeria</h2>
+
+<div class="gallery">
+<img src="https://i.postimg.cc/B6hFBpgm/Whats-App-Image-2026-06-04-at-16-19-39-(1).jpg">
+<img src="https://i.postimg.cc/jdfWDtGP/Whats-App-Image-2026-06-04-at-16-25-06.jpg">
+<img src="https://i.postimg.cc/Z5FL21x4/Whats-App-Image-2026-06-04-at-16-27-03.jpg">
+<img src="https://i.postimg.cc/432pTZKq/Whats-App-Image-2026-06-04-at-16-28-41.jpg">
+<img src="https://i.postimg.cc/fTstpk27/Whats-App-Image-2026-06-04-at-16-30-41.jpg">
+<img src="https://i.postimg.cc/43HxmT2X/Whats-App-Image-2026-06-04-at-16-32-13.jpg">
+</div>
+
+</section>
+
+<section id="momentos">
+
+<h2 class="section-title">Momentos do Dia-06/06/2026</h2>
+
+<div class="card-grid">
+
+<div class="card">
+<h3>Observaçoes</h3>
+<span>Atençao</span>
+<p>Alguns horários podem variar.</p>
+</div>
+
+<div class="card">
+<h3>Terminal Diadema</h3>
+<span>10:00</span>
+<p>Ponto de encontro da galera.</p>
+</div>
+
+<div class="card">
+<h3>Liberdade</h3>
+<span>12:00</span>
+<p>Passeio, fotos, feirinha, compras e comida.</p>
+</div>
+
+<div class="card">
+<h3>Lojinha de Conveniência</h3>
+<span>13:00</span>
+<p>Comprar besteiras para assistir a peça.</p>
+</div>
+
+<div class="card">
+<h3>Teatro Renault</h3>
+<span>14:00</span>
+<p>Shrek - O Musical.</p>
+</div>
+
+<div class="card">
+<h3>Jantar Rodizio Coreano</h3>
+<span>17:00</span>
+<p>Yakisoba Lucky Liberdade</p>
+</div>
+
+<div class="card">
+<h3>Casa </h3>
+<span>20:00</span>
+<p>Descansar para Parada.</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="timeline">
+
+<h2 class="section-title">Roteiro</h2>
+
+<div class="timeline">
+
+<div class="timeline-item">
+<h3>10:00 • Terminal Diadema</h3>
+<p>Encontro da turma.</p>
+</div>
+
+<div class="timeline-item">
+<h3>11:00 • Liberdade</h3>
+<p>Passeio e almoço.</p>
+</div>
+
+<div class="timeline-item">
+<h3>14:00 • Teatro Renault</h3>
+<p>Musical.</p>
+</div>
+
+<div class="timeline-item">
+<h3>18:00 • Jantar</h3>
+<p>Encerramento do dia.</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="memorias">
+
+<h2 class="section-title">Registro de Memórias</h2>
+
+<div class="memory-book">
+
+<a href="https://docs.google.com/forms/d/e/1FAIpQLScAQKzOyQ6WyNG4FKQoDeoQZjeIr3LVFwbzXnK4m6Ekr9EsBg/viewform?usp=publish-editor">
+    <button>Deixar uma memória</button>
+</a>
+
+</div>
+
+</section>
+
+<footer>
+Nosso Rolê • 2026
+</footer>
+
+<script>
+function addMemory(){
+
+const author =
+document.getElementById("author").value;
+
+const message =
+document.getElementById("message").value;
+
+if(!author || !message) return;
+
+const div =
+document.createElement("div");
+
+div.className = "memory-entry";
+
+div.innerHTML =
+`<strong>${author}</strong><p>${message}</p>`;
+
+document
+.getElementById("memoryList")
+.appendChild(div);
+
+document.getElementById("author").value="";
+document.getElementById("message").value="";
+}
+</script>
+
+</body>
+</html>
