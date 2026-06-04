@@ -155,3 +155,21 @@ footer{
     padding:40px;
     color:#666;
 }
+
+.memory-entry{
+    background:#f8f8f8;
+    border-left:4px solid #8b5cf6;
+    padding:20px;
+    border-radius:12px;
+    margin-top:20px;
+}
+
+.memory-entry strong{
+    display:block;
+    margin-bottom:8px;
+    font-size:1rem;
+}
+
+.memory-entry p{
+    color:#555;
+}
